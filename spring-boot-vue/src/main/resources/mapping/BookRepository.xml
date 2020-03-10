@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhf.springboot.repository.BookRepository">
+
+    <resultMap id="bookMap" type="Book">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="author" column="author"/>
+        <result property="publish" column="publish"/>
+        <result property="pages" column="pages"/>
+        <result property="price" column="price"/>
+        <association property="bookCase" javaType="BookCase" select="com.lhf.springboot.repository.BookCaseRepository.findById" column="bookcaseid"></association>
+    </resultMap>
+
+    <select id="find" resultMap="bookMap">
+        select * from book limit #{param1},#{param2}
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(*) from book
+    </select>
+
+    <insert id="save" parameterType="Book">
+        insert into book(name,author,publish,pages,price,bookcaseid) values(#{name},#{author},#{publish},#{pages},#{price},#{bookCase.id})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from book where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="bookMap">
+        select * from book where id = #{id}
+    </select>
+
+    <select id="findByIdAndName" resultMap="bookMap">
+        select * from book where id = #{id} and name = #{name}
+    </select>
+
+    <update id="update" parameterType="Book">
+        update book set name=#{name},author=#{author},publish=#{publish},pages=#{pages},price=#{price},bookcaseid=#{bookCase.id} where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:users xmlns:ns1="users">
+	<ns1:user>
+		<ns1:name key="小明"/>
+		<ns1:age key="23"/>
+		<ns1:className key="软件一班"/>
+	</ns1:user>
+</ns1:users>

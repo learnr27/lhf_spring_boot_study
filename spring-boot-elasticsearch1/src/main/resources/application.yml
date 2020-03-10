@@ -1,0 +1,28 @@
+
+server:
+  port: 8066
+
+
+spring:
+  banner:
+  charset: utf-8
+  application:
+    name: spring-boot-elasticsearch
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      repositories:
+        enabled: true
+      cluster-nodes: localhost:9200
+
+
+
+

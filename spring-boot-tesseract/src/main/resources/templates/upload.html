@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR</title>
+</head>
+<body>
+<h1>上传图片进行OCR识别：</h1>
+<form method="post" action="/upload" enctype="multipart/form-data">
+    请选择图片文件：<input type="file" name="file" /> <br/><br/>
+    转码语言：<select name="type">
+        <option value="0">英文</option>
+        <option value="1">中文</option>
+    </select><br/><br/>
+    <button type="submit" value="上传图片文件">上传图片文件</button>
+</form>
+</body>
+</html>

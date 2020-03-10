@@ -1,0 +1,66 @@
+2020-03-10 10:16:17.536 INFO  com.lhf.springboot.SpringBootPayApplication Line:55  - Starting SpringBootPayApplication on v_feiheliu-PC0 with PID 109688 (E:\code\SpringBoot\lhf_spring_boot_study\spring-boot-pay\target\classes started by v_feiheliu in E:\code\SpringBoot\lhf_spring_boot_study)
+2020-03-10 10:16:17.541 INFO  com.lhf.springboot.SpringBootPayApplication Line:655 - The following profiles are active: dev
+2020-03-10 10:16:18.866 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'spring.dubbo-com.alibaba.dubbo.spring.boot.DubboProperties' of type [com.alibaba.dubbo.spring.boot.DubboProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-10 10:16:18.868 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'com.alibaba.dubbo.spring.boot.DubboConsumerAutoConfiguration' of type [com.alibaba.dubbo.spring.boot.DubboConsumerAutoConfiguration$$EnhancerBySpringCGLIB$$af66038e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-10 10:16:19.109 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:92  - Tomcat initialized with port(s): 8088 (http)
+2020-03-10 10:16:19.117 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2020-03-10 10:16:19.118 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-03-10 10:16:19.203 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/spring-boot-pay] Line:173 - Initializing Spring embedded WebApplicationContext
+2020-03-10 10:16:19.203 INFO  org.springframework.web.context.ContextLoader Line:284 - Root WebApplicationContext: initialization completed in 1597 ms
+2020-03-10 10:16:19.374 INFO  org.apache.catalina.core.StandardService Line:173 - Stopping service [Tomcat]
+2020-03-10 10:16:19.387 INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener Line:136 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-03-10 10:21:30.180 INFO  com.lhf.springboot.SpringBootPayApplication Line:55  - Starting SpringBootPayApplication on v_feiheliu-PC0 with PID 108528 (E:\code\SpringBoot\lhf_spring_boot_study\spring-boot-pay\target\classes started by v_feiheliu in E:\code\SpringBoot\lhf_spring_boot_study)
+2020-03-10 10:21:30.188 INFO  com.lhf.springboot.SpringBootPayApplication Line:655 - The following profiles are active: dev
+2020-03-10 10:21:31.203 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'spring.dubbo-com.alibaba.dubbo.spring.boot.DubboProperties' of type [com.alibaba.dubbo.spring.boot.DubboProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-10 10:21:31.204 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker Line:330 - Bean 'com.alibaba.dubbo.spring.boot.DubboConsumerAutoConfiguration' of type [com.alibaba.dubbo.spring.boot.DubboConsumerAutoConfiguration$$EnhancerBySpringCGLIB$$f3e774ca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-03-10 10:21:31.376 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:92  - Tomcat initialized with port(s): 8088 (http)
+2020-03-10 10:21:31.383 INFO  org.apache.catalina.core.StandardService Line:173 - Starting service [Tomcat]
+2020-03-10 10:21:31.383 INFO  org.apache.catalina.core.StandardEngine Line:173 - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-03-10 10:21:31.471 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/spring-boot-pay] Line:173 - Initializing Spring embedded WebApplicationContext
+2020-03-10 10:21:31.471 INFO  org.springframework.web.context.ContextLoader Line:284 - Root WebApplicationContext: initialization completed in 1239 ms
+2020-03-10 10:21:31.949 INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver Line:58  - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-03-10 10:21:32.007 INFO  springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Line:69  - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-10 10:21:32.166 INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor Line:171 - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-10 10:21:32.197 INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping Line:54  - Adding welcome page: class path resource [templates/index.html]
+2020-03-10 10:21:32.207 INFO  com.lhf.springboot.SpringBootPayApplication Line:35  - 自定义静态资源目录,这只是个Demo,生产肯定不会暴露
+2020-03-10 10:21:32.356 INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Line:147 - Context refreshed
+2020-03-10 10:21:32.385 INFO  springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Line:150 - Found 4 custom documentation plugin(s)
+2020-03-10 10:21:32.411 INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Line:41  - Scanning for api listing references
+2020-03-10 10:21:32.545 INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Line:41  - Scanning for api listing references
+2020-03-10 10:21:32.557 INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Line:41  - Scanning for api listing references
+2020-03-10 10:21:32.593 INFO  springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Line:41  - Scanning for api listing references
+2020-03-10 10:21:32.603 INFO  springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator Line:40  - Generating unique operation named: pcPayUsingPOST_1
+2020-03-10 10:21:32.669 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer Line:204 - Tomcat started on port(s): 8088 (http) with context path '/spring-boot-pay'
+2020-03-10 10:21:32.672 INFO  com.lhf.springboot.SpringBootPayApplication Line:61  - Started SpringBootPayApplication in 3.422 seconds (JVM running for 3.981)
+2020-03-10 10:21:32.752 INFO  com.alipay.demo.trade.config.Configs Line:78  - 配置文件名: zfbinfo.properties
+2020-03-10 10:21:32.754 INFO  com.alipay.demo.trade.config.Configs Line:79  - Configs{支付宝openapi网关: https://openapi.alipay.com/gateway.do
+, 支付宝mcloudapi网关域名: http://mcloudmonitor.com/gateway.do
+, pid: XXXXXXXXXXXXXXXX
+, appid: XXXXXXXXXXXXXXXX
+, 商户RSA私钥: XXXXXX******XXXXXX
+, 商户RSA公钥: XXXXXX******XXXXXX
+, 支付宝RSA公钥: XXXXXX******XXXXXX
+, 签名类型: RSA2
+, 查询重试次数: 5
+, 查询间隔(毫秒): 5000
+, 撤销尝试次数: 3
+, 撤销重试间隔(毫秒): 2000
+, 交易保障调度延迟(秒): 5
+, 交易保障调度间隔(秒): 900
+}
+2020-03-10 10:21:32.756 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:214 - 从classpath: /E:/code/SpringBoot/lhf_spring_boot_study/spring-boot-pay/target/classes/ 获取属性文件acp_sdk.properties
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:250 - 开始从属性文件中加载配置项
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:255 - 单证书模式，使用配置文件配置的私钥签名证书，SingleCertMode:[true]
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:261 - 配置项：私钥签名证书路径==>acpsdk.signCert.path==>D:/assets/acp_test_sign.pfx 已加载
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:266 - 配置项：私钥签名证书密码==>acpsdk.signCert.pwd 已加载
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:271 - 配置项：私钥签名证书类型==>acpsdk.signCert.type==>PKCS12 已加载
+2020-03-10 10:21:32.772 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:281 - 配置项：敏感信息加密证书==>acpsdk.encryptCert.path==>D:/assets/acp_test_enc.cer 已加载
+2020-03-10 10:21:32.773 INFO  com.lhf.springboot.modules.unionpay.util.SDKUtil Line:286 - 配置项：验证签名证书路径(这里配置的是目录，不要指定到公钥文件)==>acpsdk.validateCert.dir==>D:/assets/ 已加载
+2020-03-10 10:21:32.773 INFO  com.lhf.springboot.SpringBootPayApplication Line:26  - 支付项目启动！
+2020-03-10 10:22:10.592 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/spring-boot-pay] Line:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-10 10:22:10.592 INFO  org.springframework.web.servlet.DispatcherServlet Line:525 - Initializing Servlet 'dispatcherServlet'
+2020-03-10 10:22:10.600 INFO  org.springframework.web.servlet.DispatcherServlet Line:547 - Completed initialization in 7 ms
+2020-03-10 10:32:56.121 INFO  com.lhf.springboot.modules.web.PayController Line:32  - 登录....
+2020-03-10 10:49:16.759 INFO  com.lhf.springboot.modules.weixinpay.controller.WeixinPayController Line:147 - 模式一支付回调URL

@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: spring-boot-elasticsearch2
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      cluster-nodes: 127.0.0.1:9300
+
+  elasticsearch:
+    rest:
+      uris: http://127.0.0.1:9200
+
+initial-import:
+  enabled: true
+
+server:
+  port: 8090

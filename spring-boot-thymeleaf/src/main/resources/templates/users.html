@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <link th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 style="text-align: center; color: aqua">用户列表</h1>
+<table class="table" style="text-align: center">
+    <tr>
+        <td class="active">姓名</td>
+        <td class="success">年龄</td>
+        <td class="warning">性别</td>
+        <td class="danger">身高</td>
+        <td class="info">体重</td>
+        <td class="success">手机号</td>
+        <td class="warning">邮箱</td>
+        <td class="danger">地址</td>
+        <td class="info">爱好</td>
+        <td class="active">座右铭</td>
+    </tr>
+    <tr th:each="user:${users}">
+        <td class="active" th:text="${user.name}">美女</td>
+        <td class="success" th:text="${user.age}">24</td>
+        <td class="warning" th:text="${user.sex}">女</td>
+        <td class="danger" th:text="${user.height}">171</td>
+        <td class="info" th:text="${user.weight}">50</td>
+        <td class="success" th:text="${user.phone}">182955144xx</td>
+        <td class="warning" th:text="${user.email}">276265265@qq.com</td>
+        <td class="danger" th:text="${user.address}">广东深圳</td>
+        <td class="info" th:text="${user.hobby}">游泳、绘画、写作</td>
+        <td class="active" th:text="${user.motto}">美少女</td>
+    </tr>
+</table>
+</body>
+</html>

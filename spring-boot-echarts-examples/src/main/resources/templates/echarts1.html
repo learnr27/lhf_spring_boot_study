@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>简单图表</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+</head>
+<body>
+<!--为Echarts准备一个具备大小（宽高）的Dom-->
+<div id="main" style="width:1000px;height: 800px;">
+
+</div>
+<!--<input type="hidden" th:value="${skirt}" id="skirt"/>
+<input type="hidden" th:value="${nums}" id="nums"/>-->
+
+<script type="text/javascript">
+    //var skirt=$("#skirt").val();
+    //var nums=$("#nums").val();
+
+    var skirt="[[${skirt}]]";
+    var nums="[[${nums}]]";
+
+    //基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    //指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'Echarts入门'
+        },
+        color: '#369',
+        tooltip: {},
+        legend: {
+            data: ['衣服销量']
+        },
+        xAxis: {
+            data: ['文胸', '吊带', '抹胸', '长裙', '超短裙', '睡衣', skirt]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [65, 30, 42, 40, 70, 25, nums]
+        }]
+    };
+    //使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+</script>
+</body>
+</html>

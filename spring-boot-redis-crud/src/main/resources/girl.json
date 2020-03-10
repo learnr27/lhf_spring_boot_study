@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "梦梦",
+    "age": 20,
+    "cupSize": "C罩杯",
+    "height": 170,
+    "weight": 110,
+    "hobbies": [
+      "电影","音乐","游泳"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "依依",
+    "age": 21,
+    "cupSize": "B罩杯",
+    "height": 167,
+    "weight": 100,
+    "hobbies": [
+      "旅行","音乐","绘画"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "珊珊",
+    "age": 22,
+    "cupSize": "C罩杯",
+    "height": 172,
+    "weight": 120,
+    "hobbies": [
+      "运动","音乐","绘画"
+    ]
+  }
+]

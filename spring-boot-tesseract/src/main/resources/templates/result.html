@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR</title>
+</head>
+<body>
+<h1>OCR识别图片文字结果</h1>
+<h2><span th:text="${text}"></span> </h2>
+<p>图片：</p>
+<!--<img th:src="'/' + ${file.getOriginalFilename()}" />-->
+<img th:src="${file}" />
+</body>
+</html>

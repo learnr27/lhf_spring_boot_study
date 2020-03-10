@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "梦梦",
+    "age": 21,
+    "cupSize": "B罩杯",
+    "height": 170,
+    "weight": 110
+  },
+  {
+    "id": 2,
+    "name": "珊珊",
+    "age": 19,
+    "cupSize": "B罩杯",
+    "height": 160,
+    "weight": 110
+  }
+]

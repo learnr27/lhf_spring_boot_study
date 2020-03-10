@@ -1,0 +1,54 @@
+package com.lhf.springboot.echarts.config;
+
+import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
+import com.lhf.springboot.echarts.service.ApiService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.Resource;
+
+/**
+ * @ClassName: NettySocketConfig
+ * @Author: liuhefei
+ * @Description: NettySocket配置类
+ * @Date: 2019/7/23 12:07
+ */
+@Configuration
+public class NettySocketConfig {
+
+    @Resource
+    private MyProperties myProperties;
+
+    @Resource
+    private ApiService apiService;
+
+    private static final Logger logger = LoggerFactory.getLogger(NettySocketConfig.class);
+
+    @Bean
+    public SocketIOServer socketIOServer() {
+        /*
+         * 创建Socket，并设置监听端口
+         */
+        com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
+        // 设置主机名，默认是0.0.0.0
+        // config.setHostname("localhost");
+        // 设置监听端口
+        config.setPort(myProperties.getSocketPort());
+        // 协议升级超时时间（毫秒），默认10000。HTTP握手升级为ws协议超时时间
+        config.setUpgradeTimeout(10000);
+        // Ping消息间隔（毫秒），默认25000。客户端向服务器发送一条心跳消息间隔
+        config.setPingInterval(myProperties.getPingInterval());
+        // Ping消息超时时间（毫秒），默认60000，这个时间间隔内没有接收到心跳消息就会发送超时事件
+        config.setPingTimeout(myProperties.getPingTimeout());
+        return new SocketIOServer(config);
+    }
+
+    @Bean
+    public SpringAnnotationScanner springAnnotationScanner(SocketIOServer socketServer) {
+        return new SpringAnnotationScanner(socketServer);
+    }
+}

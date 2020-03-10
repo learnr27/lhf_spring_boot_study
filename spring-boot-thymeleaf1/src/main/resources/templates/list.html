@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 style="text-align: center; color: aqua">用户列表</h1>
+<div>
+    <h1>for 循环</h1>
+    <table class="table">
+        <tr th:each="user, iterStat : ${users}">
+            <td class="active" th:text="${user.name}">美女</td>
+            <td class="success" th:text="${user.age}">24</td>
+            <td class="warning" th:text="${user.sex}">女</td>
+            <td class="danger" th:text="${user.height}">171</td>
+            <td class="info" th:text="${user.weight}">50</td>
+            <td class="success" th:text="${user.phone}">182955144xx</td>
+            <td class="warning" th:text="${user.email}">276265265@qq.com</td>
+            <td class="danger" th:text="${user.address}">广东深圳</td>
+            <td class="info" th:text="${user.hobby}">游泳、绘画、写作</td>
+            <td class="active" th:text="${user.motto}">美少女</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

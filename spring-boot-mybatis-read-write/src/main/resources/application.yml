@@ -1,0 +1,45 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: spring-boot-mybatis-read-write
+    debug:
+      enable: true
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/lhf_springboot1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+
+      max-active: 20
+      initial-size: 1
+      min-idle: 3
+      max-wait: 600
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      poolPreparedStatements: true
+    slave:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/lhf_springboot2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+
+      max-active: 20
+      initial-size: 1
+      min-idle: 3
+      max-wait: 600
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      poolPreparedStatements: true
+  aop:
+    proxy-target-class: false

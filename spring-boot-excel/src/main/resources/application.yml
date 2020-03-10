@@ -1,0 +1,22 @@
+server:
+  servlet:
+    context-path: "/api"
+  port: 8098
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lhf_springboot1?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  output:
+    ansi:
+      enabled: detect
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+logging:
+  level:
+    com.kundy.excelutils: debug

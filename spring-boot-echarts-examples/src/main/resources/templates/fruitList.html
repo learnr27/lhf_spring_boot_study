@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Echarts</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1000px; height: 800px;"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        //数据加载完之前先显示一段简单的loading动画
+        myChart.showLoading();
+
+        var names = [];   //横坐标数组（X轴）
+        var values = [];  //纵坐标数组（Y轴）
+
+        $.ajax({
+            type: "post",
+            async: true,   //异步请求
+            url: "/fruitList",   //请求发送到  /echartsShow
+            data: {},
+            dataType: "json",   //返回数据格式
+            success: function (result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if(result){
+                    for(var i=0;i<result.length;i++){
+                        names.push(result[i].name);
+                        values.push(result[i].salesVolume);
+                    }
+                    myChart.hideLoading();  //隐藏加载动画
+                    myChart.setOption({   //加载数据图表
+                        tooltip: {},
+                        legend: {
+                            data: ['销量']
+                        },
+                        xAxis: {
+                            data: names
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            name: '销量',
+                            type: 'bar',
+                            data: values
+                        }]
+                    });
+                }
+            },
+            error: function (errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    });
+</script>
+</body>
+</html>

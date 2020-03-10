@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot处理json数据</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" media="all">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"  media="all">
+
+    <script type="text/javascript" th:src="@{/js/jQuery.js}"  charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}" charset="utf-8"></script>
+    <script th:inline="javascript">
+        $(function () {
+            $.ajax({
+                url: '/girl/getList',
+                type: 'POST',
+                async: true,
+                data: {},
+                contentType: "application/json",
+                success:function (result) {
+                    console.log(result)
+                    var str = $("#tb");
+                    for(var i=0;i<result.length;i++){
+                        str.append("<tr>")
+                            .append("<td style='width:200px;'>"+result[i].id + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].name + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].age + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].cupSize + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].weight + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].height + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].phone + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].address + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].content + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].hobbies + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].params + "</td>")
+                            .append("</tr>");
+                    }
+                    $("#tb").append(str);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="panel panel-primary">
+    <div class="panel panel-heading">
+        <h3 class="panel-title">集合转JSON</h3>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="panel panel-heading">
+                <h3 class="panel-title">女孩信息</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>罩杯</th>
+                            <th>身高</th>
+                            <th>体重</th>
+                            <th>手机号</th>
+                            <th>住址</th>
+                            <th>座右铭</th>
+                            <th>爱好</th>
+                            <th>其他</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tb"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

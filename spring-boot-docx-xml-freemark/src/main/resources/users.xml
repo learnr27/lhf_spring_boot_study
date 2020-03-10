@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:users xmlns:ns2="user3" xmlns:ns1="users" xmlns:ns3="user2" xmlns:ns4="user1">
+	<ns4:user>
+		<ns4:name key="姓名" value="小花"/>
+		<ns4:age key="年龄" value="22"/>
+		<ns4:className key="班级" value="软件三班"/>
+	</ns4:user>
+	<ns3:user>
+		<ns3:name key="姓名" value="小兰"/>
+		<ns3:age key="年龄" value="21"/>
+		<ns3:className key="班级" value="软件二班"/>
+	</ns3:user>
+	<ns2:user>
+		<ns2:name key="姓名" value="小明"/>
+		<ns2:age key="年龄" value="20"/>
+		<ns2:className key="班级" value="软件一班"/>
+	</ns2:user>
+</ns1:users>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot处理json数据</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"  media="all">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"  media="all">
+
+    <script type="text/javascript" th:src="@{/js/jQuery.js}"  charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"  charset="utf-8"></script>
+
+    <script th:inline="javascript">
+        $(function () {
+            $.ajax({
+                url: '/girl/getAll',
+                type: 'post',
+                async: true,
+                data: JSON.stringify({id:1}),
+                contentType: "application/json",
+                success:function (result) {
+                    console.log(result)
+                    $("#id").html(result.id);
+                    $("#name").html(result.name);
+                    $("#age").html(result.age);
+                    $("#cupSize").html(result.cupSize);
+                    $("#weight").html(result.weight);
+                    $("#height").html(result.height);
+                    $("#phone").html(result.phone);
+                    $("#address").html(result.address);
+                    $("#content").html(result.content);
+                    $("#hobbies").html(result.hobbies);
+                    $("#params").html(result.params);
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="panel panel-primary">
+    <div class="panel panel-heading">
+        <h3 class="panel-title">对象转JSON</h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>ID: <span id="id"></span></p>
+                <p>姓名: <span id="name"></span></p>
+                <p>年龄: <span id="age"></span></p>
+                <p>罩杯: <span id="cupSize"></span></p>
+                <p>身高: <span id="height"></span></p>
+                <p>体重: <span id="weight"></span></p>
+                <p>手机号: <span id="phone"></span></p>
+                <p>住址: <span id="address"></span></p>
+                <p>座右铭: <span id="content"></span></p>
+                <p>爱好: <span id="hobbies"></span></p>
+                <p>其他: <span id="params"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

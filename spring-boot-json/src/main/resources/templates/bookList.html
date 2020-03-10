@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot处理json数据</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" media="all">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}"  media="all">
+
+    <script type="text/javascript" th:src="@{/js/jQuery.js}"  charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"  charset="utf-8"></script>
+
+    <script th:inline="javascript">
+        $(function () {
+            $.ajax({
+                url: '/book/getBookList',
+                type: 'post',
+                data: {},
+                async: true,
+                contentType: "application/json",
+                success:function (result) {
+                    console.log(result)
+                    var str = $("#tb");
+                    for(var i=0;i<result.length;i++){
+                        str.append("<tr>")
+                            .append("<td style='width:200px;'>"+result[i].bookName + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].bookAuthor + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].bookPrice + "</td>")
+                            .append("<td style='width:200px;'>"+result[i].remark + "</td>")
+                            .append("</tr>");
+                    }
+                    $("#tb").append(str);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="panel panel-primary">
+    <div class="panel panel-heading">
+        <h3 class="panel-title">集合转JSON</h3>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="panel panel-heading">
+                <h3 class="panel-title">图书信息</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>书名</th>
+                            <th>作者</th>
+                            <th>价格</th>
+                            <th>备注</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tb"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

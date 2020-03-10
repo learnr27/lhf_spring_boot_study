@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhf.springboot.repository.GirlRepository">
+
+    <resultMap id="girlMap" type="Girl">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="height" column="height"/>
+        <result property="weight" column="weight"/>
+        <result property="cupSize" column="cup_size"/>
+    </resultMap>
+
+    <select id="find" resultMap="girlMap">
+        select * from girl limit #{param1},#{param2}
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(*) from girl
+    </select>
+
+    <insert id="save" parameterType="Girl">
+        insert into girl(name, age, height, weight, cup_size) values(#{name},#{age},#{height},#{weight},#{cupSize})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from girl where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="girlMap">
+        select * from girl where id = #{id}
+    </select>
+
+    <select id="findByIdAndName" resultMap="girlMap">
+        select * from girl where id = #{id} and name = #{name}
+    </select>
+
+    <update id="update" parameterType="Girl">
+        update girl set name=#{name},age=#{age},height=#{height},weight=#{weight},cup_size=#{cupSize} where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lhf.springboot.mapper.GirlMapper">
+    <resultMap id="BaseResultMap" type="com.lhf.springboot.entity.Girl">
+        <id column="id" property="id" javaType="Long"/>
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="height" property="height" jdbcType="INTEGER"/>
+        <result column="weight" property="weight" jdbcType="INTEGER" />
+        <result column="cup_size" property="cupSize" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,age,height,weight,cup_size
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" /> FROM girl
+    </select>
+
+    <select id="findByGrilId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM girl WHERE id = #{id}
+    </select>
+
+    <insert id="addGirl" parameterType="com.lhf.springboot.entity.Girl">
+        INSERT INTO girl(name,age,height,weight,cup_size)
+        VALUES (#{name}, #{age}, #{height}, #{weight}, #{cupSize})
+    </insert>
+
+    <update id="updateGirl" parameterType="com.lhf.springboot.entity.Girl">
+        UPDATE girl
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="age != null">age = #{age},</if>
+        <if test="height != null">height = #{height},</if>
+        <if test="weight != null">weight = #{weight},</if>
+        <if test="cupSize != null">cup_size = #{cupSize}</if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM girl WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>if/Unless</h1>
+<a th:if="${flag == 'yes'}" th:href="@{http://www.baidu.com/}">百度</a>
+
+<br>
+
+<a th:unless="${flag != 'no'}" th:href="@{http://www.imooc.com/}">慕课</a>
+</body>
+</html>

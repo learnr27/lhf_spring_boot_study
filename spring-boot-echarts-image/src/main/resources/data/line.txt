@@ -1,0 +1,113 @@
+入参数据：
+{
+  "horizontal": true,
+  "lineParam": {
+    "legendName": "股票走势图例",
+    "xdatas": [
+      [
+       3364, 13899, 2181, 21798, 6796, 6595, 25000
+      ]
+    ],
+    "ydatas": [
+       "周一", "周二", "周三", "周四", "周五", "周六", "周天"
+    ]
+  },
+  "title": "股票走势"
+}
+
+{
+  "horizontal": true,
+  "lineParam": {
+    "legendName": "胸罩图例",
+    "xdatas": [
+      [
+       43364, 13899, 12000, 2181, 21798, 1796, 1300
+      ]
+    ],
+    "ydatas": [
+        "A罩杯", "B罩杯", "C罩杯", "D罩杯", "E罩杯", "F罩杯","G罩杯"
+    ]
+  },
+  "title": "胸罩使用人数"
+}
+
+结果数据：
+{
+	"title": {
+		"text": "股票走势",
+		"subtext": "",
+		"textStyle": {
+			"color": "red",
+			"fontSize": 15,
+			"fontWeight": "bolder"
+		},
+		"x": "left"
+	},
+	"tooltip": {
+		"trigger": "axis"
+	},
+	"legend": {
+		"textStyle": {
+			"color": "red",
+			"fontSize": 15,
+			"fontWeight": "bolder"
+		},
+		"data": ["股票走势图例"]
+	},
+	"xAxis": [{
+		"type": "category",
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"fontSize": 15,
+				"fontWeight": "bolder"
+			}
+		},
+		"axisLine":{
+             "lineStyle":{
+                "color":'#315070', //更改坐标轴颜色
+                "width":4
+             }
+        },
+		"boundaryGap": false,
+		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周天"]
+	}],
+	"yAxis": [{
+		"type": "value",
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"fontSize": 15,
+				"fontWeight": "bolder"
+			}
+		},
+		"axisLine":{
+             "lineStyle":{
+                "color":'#315070', //更改坐标轴颜色
+                "width":4
+             }
+        }
+	}],
+	"series": [{
+		"smooth": true,
+		"dataFilter": "nearest",
+		"lineStyle": {
+			"color": "red",
+			"width": 4
+		},
+		"legendHoverLink": true,
+		"name": "股票走势图例",
+		"type": "line",
+		"stack": "总量",
+		"symbolSize": "15",
+		"showAllSymbol": true,
+		"label": {
+			"normal": {
+				"color": "green",
+				"show": true,
+				"position": "right"
+			}
+		},
+		"data": [3364, 13899, 2181, 21798, 6796, 6595, 25000]
+	}]
+}

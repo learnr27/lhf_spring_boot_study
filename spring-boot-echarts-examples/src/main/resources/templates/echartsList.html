@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>简单图表</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+</head>
+<body>
+<!--为Echarts准备一个具备大小（宽高）的Dom-->
+<div id="main" style="width:1000px;height: 800px;">
+
+</div>
+
+
+<script type="text/javascript">
+
+    //基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    //定义数组来接收数据
+    var productName = [];
+    var productNum = [];
+
+    //ajax接收数据
+    $.ajax({
+        type: "GET",
+        url: "/productList",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            for(var i=0;i<result.length;i++){
+                productName.push(result[i].productName);
+                productNum.push(result[i].productNum);
+            }
+        },
+        error: function (errorMsg) {
+            alert("获取后台数据失败！");
+        }
+    });
+
+    //指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'Echarts图表'
+        },
+        color: 'aqua',
+        tooltip: {},
+        legend: {
+            data: ['衣服销量']
+        },
+        xAxis: {
+            data: productName
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: productNum
+        }]
+    };
+    //使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+</script>
+</body>
+</html>

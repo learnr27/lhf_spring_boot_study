@@ -1,0 +1,11 @@
+server:
+  port: 8092
+
+spring:
+  mvc:   #静态文件
+    static-path-pattern: /static/**
+  thymeleaf:
+    model: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+

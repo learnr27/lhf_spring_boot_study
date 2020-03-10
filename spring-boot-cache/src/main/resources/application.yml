@@ -1,0 +1,25 @@
+#设置应用端口
+server:
+  port: 8087
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lhf_springboot2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  cache:
+    #ehcache配置文件路径
+    ehcache:
+      config: classpath:/ehcache/ehcache.xml
+    #指定缓存类型，可加可不加
+#    type: ehcache
+
+# MyBatis
+mybatis:
+  type-aliases-package: com.lhf.springboot.domain
+  mapper-locations: classpath:/mapper/*.xml
+  #sql打印配置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

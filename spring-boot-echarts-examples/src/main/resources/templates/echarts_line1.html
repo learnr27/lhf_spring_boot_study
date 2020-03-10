@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折线图</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 800px; height: 600px"></div>
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    //定义数组来接收数据
+    var productName = [];
+    var productNum = [];
+
+    //ajax接收数据
+    $.ajax({
+        type: "GET",
+        url: "/productList",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            for(var i=0;i<result.length;i++){
+                productName.push(result[i].productName);
+                productNum.push(result[i].productNum);
+            }
+        },
+        error: function (errorMsg) {
+            alert("获取后台数据失败！");
+        }
+    });
+
+    option = {
+        xAxis: {
+            type: 'category',
+            data: productName
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: productNum,
+            type: 'line'
+        }]
+    };
+
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

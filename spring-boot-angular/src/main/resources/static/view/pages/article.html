@@ -1,0 +1,188 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<div class="container-fluid" id="deployHistoryList">
+    <div class="modal-body">
+        <div class="row">
+            <form class="form-inline pull-left col-sm-10">
+               <!-- <div class="form-group form-group-sm">
+                    <label><h4 style="font-weight:bold ">{{ 'ARTICLE_TITLE' | translate}}:</h4></label>
+                    <input type="text" class="form-control" ng-model="title">
+                </div>
+
+                <div class="form-group form-group-sm">
+                    <label><h4 style="font-weight:bold ">{{ 'ARTICLE_AUTHOR' | translate}}:</h4></label>
+                    <input type="text" class="form-control" ng-model="author">
+                </div>
+
+                <div class="form-group form-group-sm">
+                    <button type="button" class="btn btn-raised btn-sm  btn-primary" data-toggle="modal"
+                            ng-click="queryArticleByTitleOrAuthor()">
+                        <span class="glyphicon glyphicon-search"></span>{{ 'SEARCH' | translate}}
+                    </button>
+                </div>-->
+
+                <div class="form-group form-group-sm">
+                    <label><h4 style="font-weight:bold ">{{ 'ARTICLE_TITLE' | translate}}:</h4></label>
+                    <input type="text" class="form-control" ng-model="filterStr">
+                </div>
+
+                <div class="form-group form-group-sm">
+                    <button class="btn btn-raised btn-sm btn-primary" type="button" ng-click="openAddArticleDialog()">{{'ADD' |translate}}</button>
+                </div>
+                <div class="form-group form-group-sm">
+                    <button class="btn btn-raised btn-sm btn-primary" type="button" ng-click="refreshArticleData()">
+                        {{'REFRESH' | translate}}
+                    </button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div>
+            <div id="deployList" class="row">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center"><a ng-click="sortByKey('article.id')">{{ 'ARTICLE_ID' | translate}}</a></th>
+                        <th class="text-center">{{ 'ARTICLE_TITLE' | translate}}</th>
+                        <th class="text-center">{{ 'ARTICLE_AUTHOR' | translate}}</th>
+                        <th class="text-center">{{ 'ARTICLE_TYPE' | translate}}</th>
+                        <th class="text-center">{{ 'ARTICLE_CONTENT' | translate}}</th>
+                        <th class="text-center">{{ 'ARTICLE_PRESS' | translate}}</th>
+                        <th class="text-center"><a ng-click="sortByKey('article.pubDate')">{{'ARTICLE_PUB_DATE' | translate}}</a></th>
+                        <th class="text-center">{{ 'OPERATION' | translate}}</th>
+                    </tr>
+                    <tr ng-repeat="article in articleShowList">
+                        <td class="text-center">{{article.id}}</td>
+                        <td class="text-center">{{article.title}}</td>
+                        <td class="text-center">{{article.author}}</td>
+                        <td class="text-center">{{article.type}}</td>
+                        <td class="text-center">{{article.content}}</td>
+                        <td class="text-center">{{article.press}}</td>
+                        <td class="text-center">{{article.pubDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                        <td class="text-center">
+
+                            <button name="client" ng-click="openUpdateDialog(article.id)"
+                                    class="btn btn-raised btn-sm btn-primary" type="button">{{'UPDATE' | translate}}
+                            </button>
+
+                            <button name="client" ng-click="deleteArticle(article.id)"
+                                    class="btn btn-raised btn-sm btn-danger" type="button">{{'DELETE' | translate}}
+                            </button>
+
+                           <!-- <button class="btn btn-raised btn-sm btn-danger" type="button"
+                                    ng-confirm-click="Are you sure to delete?"
+                                    confirmed-click="deleteArticle(article.id)">{{'DELETE' | translate}}
+                            </button>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <tm-pagination conf="paginationConf"></tm-pagination>
+        </div>
+    </div>
+</div>
+
+<!-- 系统信息添加或编辑弹窗-->
+<script type="text/ng-template" id="articleModifyDialog">
+    <div>
+        <div>
+            <div class="modal-header">
+                <h4 class="modal-title">{{'ARTICLE'|translate}}</h4>
+            </div>
+            <div class="modal-body " ng-repeat="item in ngDialogData.articleRequestList">
+                <form id="addAppForm" name="addAppForm" class="form-horizontal" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_ID' | translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.id" type="text" placeholder="文章编号不可重复"
+                                   ng-disabled="ngDialogData.bIsUpdate" ng-blur="validationOfParameters(item.id)"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">文章编号不能为空.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_AUTHOR'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.author" type="text"
+                                   ng-disabled="ngDialogData.bIsUpdate"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">作者名不能为空.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_TITLE'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.title" type="text"
+                                   ng-disabled="ngDialogData.bIsUpdate"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">文章标题不能为空.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_TYPE'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.type" type="text"
+                                   ng-disabled="ngDialogData.bIsUpdate"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">文章类型不能为空.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_CONTENT'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" ng-model="item.content" rows="2" cols="10">文章内容....</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_PRESS'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.press" type="text"
+                                   ng-disabled="ngDialogData.bIsUpdate"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">出版社不能为空.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{'ARTICLE_PUB_DATE'|translate}}:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" ng-model="item.pubDate" type="text"
+                                   ng-disabled="ngDialogData.bIsUpdate"  required/>
+                            <span class="text-danger" ng-show="addAppForm.name.$error.required">出版时间不能为空.</span>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <div ng-hide="ngDialogData.bIsUpdate">
+                        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-disabled="addAppForm.$invalid"
+                                ng-click="postCreateArticleRequest(item)">{{ 'COMMIT' | translate }}
+                        </button>
+                    </div>
+                    <!--<div ng-hide="ngDialogData.bIsCreate">
+                        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-disabled="addAppForm.$invalid"
+                                ng-click="postUpdateArticleRequest(item)">{{ 'UPDATE' | translate }}
+                        </button>
+                    </div>-->
+                    <button type="button" class="ngdialog-button ngdialog-button-secondary"
+                            ng-click="closeThisDialog('Cancel')">{{ 'CLOSE' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+

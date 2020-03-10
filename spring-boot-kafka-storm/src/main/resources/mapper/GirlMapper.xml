@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhf.springboot.dao.GirlDao">
+
+    <resultMap id="girlMap" type="Girl">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="height" column="height"/>
+        <result property="weight" column="weight"/>
+        <result property="cupSize" column="cup_size"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, age, height, weight, cupSize
+    </sql>
+
+    <select id="findByGirl" resultMap="girlMap" parameterType="Girl">
+        select <include refid="Base_Column_List" /> from girl where 1 = 1
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            and name = #{name}
+        </if>
+        <if test="age != null and age != ''">
+            and age = #{age}
+        </if>
+        <if test="height != null and height != ''">
+            and height = #{height}
+        </if>
+        <if test="weight != null and weight != ''">
+            and weight = #{weight}
+        </if>
+        <if test="cup_size != null and cup_size != ''">
+            and cup_size = #{cupSize}
+        </if>
+
+    </select>
+    <insert id="insertBatch" parameterType="java.util.List" useGeneratedKeys="true">
+        insert into girl (name, age, height, weight, cup_size)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.name},#{item.age}, #{item.height}, #{item.weight}, #{cupSize})
+        </foreach>
+
+    </insert>
+
+    <select id="find" resultMap="girlMap">
+        select * from girl limit #{param1},#{param2}
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(*) from girl
+    </select>
+
+    <insert id="save" parameterType="Girl">
+        insert into girl(name, age, height, weight, cup_size) values(#{name},#{age},#{height},#{weight},#{cupSize})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from girl where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="girlMap">
+        select * from girl where id = #{id}
+    </select>
+
+    <select id="findByIdAndName" resultMap="girlMap">
+        select * from girl where id = #{id} and name = #{name}
+    </select>
+
+    <update id="update" parameterType="Girl">
+        update girl set name=#{name},age=#{age},height=#{height},weight=#{weight},cup_size=#{cupSize} where id = #{id}
+    </update>
+</mapper>
