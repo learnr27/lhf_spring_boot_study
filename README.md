@@ -1,9 +1,13 @@
 ![logo](image/logo.jpg)
+
 #SpringBoot学习
 ### 项目说明
 本工程是本人在工作中用到的关于SpringBoot相关的用法的总结，仅仅是demo实例，在实际开发中，可以做参考。       
 本工程实现了SpringBoot结合相关的技术整合而成，具体相关的技术有：SpringBoot-Admin, Angular, Cache, Freemarker, Druid, Echarts, JSON, Elasticsearch, Email, JPA, Kafka, log4j, logback, MongoDB, Mybatis, Netty, Quartz, RocketMQ, Thymeleaf, Vue, JWT, Redis, MySQL, swagger2等等相关的技术。
 本工程参考了很多大牛的开源的源代码，记录了自己的学习过程，可能有部分代码有问题，请见谅！
+
+#### 项目地址：https://github.com/JavaCodeMood/lhf_spring_boot_study
+
 
 ### 项目模块说明
 项目名称                     | 项目说明
@@ -56,6 +60,7 @@ spring-boot-netty                                     | 整合Netty
 spring-boot-pay                                       | 实现微信、支付宝、银联支付功能（未完）
 spring-boot-quartz                                    | 整合quartz
 spring-boot-rabbitmq                                  | 整合rabbitmq
+spring-boot-rabbitmq                                  | 整合rabbitmq实现发送消息
 spring-boot-redis                                     | 整合Redis
 spring-boot-redis-crud                                | 整合redis实现crud功能
 spring-boot-redis-template                            | 整合Redis Template实现相关功能
